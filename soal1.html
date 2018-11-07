@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	Data JSON Asli :
+	<div id="div1" style="background-color: #0f9;">
+
+	</div>
+	<br>
+	Data JSON Setelah di convert ke string :
+	<div id="div2" style="background-color: #09f;">
+
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	function data(){
+		var data_json = {"itemId":"12341822","itemName":"desk","price":700000,"ratings":[{"rater":"akmal","score":4},{"rater":"andi","score":5}],"freeShiping":true,"color":['brown','black']};
+
+		return data_json;
+	}
+	console.log(data());
+	document.getElementById('div1').innerHTML=data();
+	document.getElementById('div2').innerHTML=JSON.stringify(data());
+</script>

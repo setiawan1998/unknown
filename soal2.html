@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form method="POST" action="a" id="form" onsubmit="validasi();return false;">
+		<input type="text" name="username" id="username" placeholder="username">
+		<input type="submit" name="submit" id="submit">
+	</form>
+	<div id="div"></div>
+</body>
+</html>
+<script type="text/javascript">
+	function validasi_karakter(username_karakter){
+		var pola_karakter = /^[a-zA-Z]+$/;
+		return pola_karakter.test(username_karakter);
+	}
+	function validasi_angka(username_angka){
+		var pola_angka = /^[0-9]+$/;
+		return pola_angka.test(username_angka);
+	}
+	function validasi(){
+		var username = document.getElementById('username').value;
+		if(username == ""){
+			alert("Username Tidak Boleh Kosong");
+		}else if(username.length != 8){
+			alert("Karakter harus berjumlah 8");
+		}else{
+			var username_karakter = username.substring(0,5);
+			var username_simbol = username.substring(5,6);
+			var username_angka = username.substring(6,8);
+			if(!validasi_karakter(username_karakter)){
+				alert("5 karakter pertama harus huruf");
+				document.getElementById('div').innerHTML = "";
+			}else if(username_simbol != "_"){
+				alert("karakter ke 6 harus menggunakan symbol underscore");
+				document.getElementById('div').innerHTML = "";
+			}else if(!validasi_angka(username_angka)){
+				alert("2 karakter terakhir harus menggunakan angka");
+				document.getElementById('div').innerHTML = "";
+			}else{
+				document.getElementById('div').innerHTML = username;
+			}
+		}
+		return false;
+	}
+</script>
